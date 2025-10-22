@@ -1,0 +1,153 @@
+.terms-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.terms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container .logo {
+  height: 50px;
+  width: auto;
+}
+
+.language-flags {
+  display: flex;
+  gap: 15px;
+}
+
+.flag {
+  height: 30px;
+  width: auto;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.flag:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.flag.active {
+  border-color: #0066cc;
+  opacity: 1;
+}
+
+.terms-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.terms-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.intro {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.terms-section {
+  background: white;
+  padding: 30px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.terms-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.terms-section p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.back-link {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.back-link a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+  color: #0052a3;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .terms-content h1 {
+    font-size: 26px;
+  }
+
+  .terms-section {
+    padding: 20px;
+  }
+
+  .terms-section h2 {
+    font-size: 18px;
+  }
+
+  .intro {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-header {
+    padding: 15px 20px;
+  }
+
+  .logo-container .logo {
+    height: 40px;
+  }
+
+  .flag {
+    height: 25px;
+  }
+
+  .terms-content {
+    padding: 30px 15px;
+  }
+
+  .terms-content h1 {
+    font-size: 24px;
+  }
+
+  .terms-section {
+    padding: 15px;
+  }
+}

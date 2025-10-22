@@ -1,0 +1,254 @@
+.pricelist-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.pricelist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container .logo {
+  height: 50px;
+  width: auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.language-flags {
+  display: flex;
+  gap: 15px;
+}
+
+.flag {
+  height: 30px;
+  width: auto;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.flag:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.flag.active {
+  border-color: #0066cc;
+  opacity: 1;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #c82333;
+}
+
+.pricelist-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pricelist-content h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 30px 0;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loading {
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  padding: 100px 20px;
+}
+
+.table-wrapper {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow-x: auto;
+}
+
+.pricelist-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.pricelist-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.pricelist-table th {
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pricelist-table tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+.pricelist-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.pricelist-table td {
+  padding: 10px 12px;
+}
+
+.pricelist-table input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.pricelist-table input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.pricelist-table input[type="number"] {
+  text-align: right;
+}
+
+.save-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.save-button {
+  padding: 14px 40px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.save-button:hover:not(:disabled) {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+.save-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 1024px) {
+  .hide-mobile-tablet {
+    display: none;
+  }
+
+  .pricelist-table {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .pricelist-table {
+    min-width: 400px;
+  }
+
+  .pricelist-header {
+    padding: 15px 20px;
+  }
+
+  .header-actions {
+    gap: 15px;
+  }
+
+  .language-flags {
+    gap: 10px;
+  }
+
+  .flag {
+    height: 25px;
+  }
+
+  .logout-button {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+
+  .pricelist-content h1 {
+    font-size: 28px;
+  }
+
+  .pricelist-table th,
+  .pricelist-table td {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container .logo {
+    height: 40px;
+  }
+
+  .pricelist-content {
+    padding: 30px 15px;
+  }
+
+  .pricelist-content h1 {
+    font-size: 24px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .save-button {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+}
