@@ -38,8 +38,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
-            <Route path="*" element={<Navigate to="/pricelist" replace />} />
           </Routes>
         </Router>
       </LanguageProvider>
