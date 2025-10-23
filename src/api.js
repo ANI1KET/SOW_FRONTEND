@@ -46,3 +46,20 @@ export const getProducts = async (token) => {
 
   return response.json();
 };
+
+export const updateProduct = async (token, productId, updates) => {
+  const response = await fetch(`${API_BASE_URL}/api/products/${productId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(updates),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to update product');
+  }
+
+  return response.json();
+};
