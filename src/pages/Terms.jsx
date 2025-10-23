@@ -12,9 +12,14 @@ const Terms = () => {
     const fetchTexts = async () => {
       try {
         const data = await getTexts("terms", language);
-        setTexts(data);
+        setTexts(
+          data.reduce((acc, item) => {
+            acc[item.key] = item.value;
+            return acc;
+          }, {})
+        );
       } catch (err) {
-        console.error("Failed to fetch texts");
+        console.error("Failed to fetch texts", err);
       }
     };
     fetchTexts();

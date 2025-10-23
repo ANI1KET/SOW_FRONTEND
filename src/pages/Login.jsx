@@ -68,56 +68,75 @@ const Login = () => {
           />
         </div>
 
-        <div className="language-flags">
-          <img
-            src="https://storage.123fakturere.no/public/flags/GB.png"
-            alt="English"
-            className={`flag ${language === "en" ? "active" : ""}`}
-            onClick={() => handleLanguageChange("en")}
-          />
-          <img
-            src="https://storage.123fakturere.no/public/flags/SE.png"
-            alt="Swedish"
-            className={`flag ${language === "sv" ? "active" : ""}`}
-            onClick={() => handleLanguageChange("sv")}
-          />
-        </div>
-
-        <button
-          className="hamburger"
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </header>
-
-      {menuOpen && (
-        <nav className="mobile-menu">
-          <a href="/login" onClick={() => setMenuOpen(false)}>
-            {texts.menu_login || "Login"}
-          </a>
-          <a href="/terms" onClick={() => setMenuOpen(false)}>
-            {texts.menu_terms || "Terms"}
-          </a>
+        <nav className="nav-menu">
+          <a href="/">{texts.menu_home || "Home"}</a>
+          <a href="/order">{texts.menu_order || "Order"}</a>
+          <a href="/customers">{texts.menu_customers || "Our Customers"}</a>
+          <a href="/about">{texts.menu_about || "About us"}</a>
+          <a href="/contact">{texts.menu_contact || "Contact Us"}</a>
         </nav>
-      )}
+
+        <div className="language-dropdown">
+          <button
+            className="language-button"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span>{language === "sv" ? "Svenska" : "English"}</span>
+            <img
+              src={
+                language === "sv"
+                  ? "https://storage.123fakturere.no/public/flags/SE.png"
+                  : "https://storage.123fakturere.no/public/flags/GB.png"
+              }
+              alt="Flag"
+              className="flag-icon"
+            />
+          </button>
+          {menuOpen && (
+            <div className="language-menu">
+              <button
+                onClick={() => {
+                  handleLanguageChange("sv");
+                  setMenuOpen(false);
+                }}
+              >
+                <span>Svenska</span>
+                <img
+                  src="https://storage.123fakturere.no/public/flags/SE.png"
+                  alt="Swedish"
+                  className="flag-icon"
+                />
+              </button>
+              <button
+                onClick={() => {
+                  handleLanguageChange("en");
+                  setMenuOpen(false);
+                }}
+              >
+                <span>English</span>
+                <img
+                  src="https://storage.123fakturere.no/public/flags/GB.png"
+                  alt="English"
+                  className="flag-icon"
+                />
+              </button>
+            </div>
+          )}
+        </div>
+      </header>
 
       <div className="login-content">
         <div className="login-box">
-          <h1>{texts.title || "Welcome to 123 Fakturera"}</h1>
-          <p className="subtitle">
-            {texts.subtitle || "Please log in to continue"}
-          </p>
+          <h1>{texts.title || "Log in"}</h1>
 
           {error && <div className="error-message">{error}</div>}
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>{texts.email || "Email"}</label>
+              <label>{texts.email_label || "Enter your email address"}</label>
               <input
                 type="email"
+                placeholder={texts.email_placeholder || "Email address"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -126,9 +145,10 @@ const Login = () => {
             </div>
 
             <div className="form-group">
-              <label>{texts.password || "Password"}</label>
+              <label>{texts.password_label || "Enter your password"}</label>
               <input
                 type="password"
+                placeholder={texts.password_placeholder || "Password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -137,15 +157,35 @@ const Login = () => {
             </div>
 
             <button type="submit" className="login-button" disabled={loading}>
-              {loading ? "..." : texts.login_button || "Log In"}
+              {loading ? "..." : texts.login_button || "Log in"}
             </button>
 
-            <a href="#" className="forgot-password">
-              {texts.forgot_password || "Forgot password?"}
-            </a>
+            <div className="login-links">
+              <a href="#" className="register-link">
+                {texts.register || "Register"}
+              </a>
+              <a href="#" className="forgot-password">
+                {texts.forgot_password || "Forgotten password?"}
+              </a>
+            </div>
           </form>
         </div>
       </div>
+
+      <footer className="login-footer">
+        <div className="footer-content">
+          <div className="footer-brand">123 Fakturera</div>
+          <div className="footer-links">
+            <a href="/">{texts.footer_home || "Home"}</a>
+            <a href="/order">{texts.footer_order || "Order"}</a>
+            <a href="/contact">{texts.footer_contact || "Contact us"}</a>
+          </div>
+          <div className="footer-copyright">
+            {texts.footer_copyright ||
+              "© Lättfaktura, CRO no. 638537, 2025. All rights reserved."}
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

@@ -3,15 +3,23 @@ import { useState, useEffect, useContext, createContext } from "react";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("user");
+    try {
+      const storedToken = localStorage.getItem("token");
+      const storedUser = localStorage.getItem("user");
 
-    if (storedToken) setToken(storedToken);
-    if (storedUser) setUser(JSON.parse(storedUser));
+      if (storedToken) setToken(storedToken);
+      if (storedUser) setUser(JSON.parse(storedUser));
+    } catch (err) {
+      console.error("Failed to parse stored user:", err);
+      localStorage.removeItem("user");
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const loginUser = (token, user) => {
@@ -28,9 +36,11 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
   };
 
+  const isAuthenticated = !!token;
+
   return (
     <AuthContext.Provider
-      value={{ token, user, loginUser, logout, isAuthenticated: !!token }}
+      value={{ token, user, loginUser, logout, isAuthenticated, loading }}
     >
       {children}
     </AuthContext.Provider>
@@ -40,8 +50,6 @@ export const AuthProvider = ({ children }) => {
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within AuthProvider");
-  }
+  if (!context) throw new Error("useAuth must be used within AuthProvider");
   return context;
 };

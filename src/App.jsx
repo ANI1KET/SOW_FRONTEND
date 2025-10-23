@@ -9,7 +9,9 @@ import "./App.css";
 import Login from "./pages/Login";
 import Terms from "./pages/Terms";
 import Pricelist from "./pages/Pricelist";
+import PublicRoute from "./PublicRoute";
 import { AuthProvider } from "./AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 import { LanguageProvider } from "./LanguageContext";
 
 function App() {
@@ -18,10 +20,26 @@ function App() {
       <LanguageProvider>
         <Router>
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
             <Route path="/terms" element={<Terms />} />
-            <Route path="/pricelist" element={<Pricelist />} />
-            <Route path="/" element={<Navigate to="/login" replace />} />
+
+            <Route
+              path="/pricelist"
+              element={
+                <ProtectedRoute>
+                  <Pricelist />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="*" element={<Navigate to="/pricelist" replace />} />
           </Routes>
         </Router>
       </LanguageProvider>

@@ -1,4 +1,4 @@
-const API_BASE_URL = `http://localhost:5000/api`;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const login = async (
   email,
@@ -42,27 +42,6 @@ export const getProducts = async (token) => {
 
   if (!response.ok) {
     throw new Error("Failed to fetch products");
-  }
-
-  return response.json();
-};
-
-export const updateProduct = async (
-  token,
-  productId,
-  updates
-) => {
-  const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(updates),
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to update product");
   }
 
   return response.json();
