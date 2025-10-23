@@ -4,7 +4,7 @@ export const login = async (
   email,
   password
 ) => {
-  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+  const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const getTexts = async (
   page,
   language
 ) => {
-  const response = await fetch(`${API_BASE_URL}/texts/${page}/${language}`);
+  const response = await fetch(`${API_BASE_URL}/api/texts/${page}/${language}`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch texts");
@@ -34,7 +34,7 @@ export const getTexts = async (
 };
 
 export const getProducts = async (token) => {
-  const response = await fetch(`${API_BASE_URL}/products`, {
+  const response = await fetch(`${API_BASE_URL}/api/products`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
