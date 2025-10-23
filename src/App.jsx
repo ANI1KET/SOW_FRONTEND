@@ -2,7 +2,7 @@ import {
   Route,
   Routes,
   Navigate,
-  BrowserRouter as Router,
+  HashRouter as Router,
 } from "react-router-dom";
 
 import "./App.css";
@@ -38,6 +38,8 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            <Route path="*" element={<Navigate to="/pricelist" replace />} />
           </Routes>
         </Router>
       </LanguageProvider>
