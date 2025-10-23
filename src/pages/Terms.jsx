@@ -6,6 +6,7 @@ import { useLanguage } from "../LanguageContext";
 
 const Terms = () => {
   const [texts, setTexts] = useState({});
+  const [menuOpen, setMenuOpen] = useState(false);
   const { language, changeLanguage } = useLanguage();
 
   useEffect(() => {
@@ -31,7 +32,9 @@ const Terms = () => {
 
   return (
     <div className="terms-container">
-      <header className="terms-header">
+      <div className="login-background"></div>
+
+      <header className="login-header">
         <div className="logo-container">
           <img
             src="https://storage.123fakturera.se/public/icons/diamond.png"
@@ -40,95 +43,80 @@ const Terms = () => {
           />
         </div>
 
-        <div className="language-flags">
-          <img
-            src="https://storage.123fakturere.no/public/flags/GB.png"
-            alt="English"
-            className={`flag ${language === "en" ? "active" : ""}`}
-            onClick={() => handleLanguageChange("en")}
-          />
-          <img
-            src="https://storage.123fakturere.no/public/flags/SE.png"
-            alt="Swedish"
-            className={`flag ${language === "sv" ? "active" : ""}`}
-            onClick={() => handleLanguageChange("sv")}
-          />
+        <div className="terms-flex">
+          <nav className="nav-menu">
+            <a href="/">{texts.menu_home || "Home"}</a>
+            <a href="/order">{texts.menu_order || "Order"}</a>
+            <a href="/customers">{texts.menu_customers || "Our Customers"}</a>
+            <a href="/about">{texts.menu_about || "About us"}</a>
+            <a href="/contact">{texts.menu_contact || "Contact Us"}</a>
+          </nav>
+
+          <div className="language-dropdown">
+            <button
+              className="language-button"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <span>{language === "sv" ? "Svenska" : "English"}</span>
+              <img
+                src={
+                  language === "sv"
+                    ? "https://storage.123fakturere.no/public/flags/SE.png"
+                    : "https://storage.123fakturere.no/public/flags/GB.png"
+                }
+                alt="Flag"
+                className="flag-icon"
+              />
+            </button>
+            {menuOpen && (
+              <div className="language-menu">
+                <button
+                  onClick={() => {
+                    handleLanguageChange("sv");
+                    setMenuOpen(false);
+                  }}
+                >
+                  <span>Svenska</span>
+                  <img
+                    src="https://storage.123fakturere.no/public/flags/SE.png"
+                    alt="Swedish"
+                    className="flag-icon"
+                  />
+                </button>
+                <button
+                  onClick={() => {
+                    handleLanguageChange("en");
+                    setMenuOpen(false);
+                  }}
+                >
+                  <span>English</span>
+                  <img
+                    src="https://storage.123fakturere.no/public/flags/GB.png"
+                    alt="English"
+                    className="flag-icon"
+                  />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
-      <main className="terms-content">
-        <h1>{texts.title}</h1>
+      <div className="terms-page">
+        <h1 className="terms-title">{texts.title}</h1>
+        <button className="back-btn top-btn">Close and Go Back</button>
 
-        <p className="intro">{texts.intro}</p>
-
-        <section className="terms-section">
-          <h2>{texts.section1_title}</h2>
-          <p>{texts.section1_content}</p>
-        </section>
-
-        <section className="terms-section">
-          <h2>{texts.section2_title}</h2>
-          <p>{texts.section2_content}</p>
-        </section>
-
-        <section className="terms-section">
-          <h2>{texts.section3_title}</h2>
-          <p>{texts.section3_content}</p>
-        </section>
-
-        <section className="terms-section">
-          <h2>{texts.section4_title}</h2>
-          <p>{texts.section4_content}</p>
-        </section>
-
-        <div className="back-link">
-          <a href="/login">← Back to Login</a>
+        <div className="terms-box-plain">
+          <p>
+            {texts.intro} {texts.section1_title} {texts.section1_content}{" "}
+            {texts.section2_title} {texts.section2_content}{" "}
+            {texts.section3_title} {texts.section3_content}{" "}
+            {texts.section4_title} {texts.section4_content}
+          </p>
         </div>
-      </main>
-      {/* <main className="terms-content">
-        <h1>{texts.title || "Terms and Conditions"}</h1>
 
-        <p className="intro">
-          {texts.intro ||
-            "Welcome to 123 Fakturera. By using our service, you agree to these terms."}
-        </p>
-
-        <section className="terms-section">
-          <h2>{texts.section1_title || "1. Service Description"}</h2>
-          <p>
-            {texts.section1_content ||
-              "Our service provides invoicing and accounting solutions for small and medium businesses."}
-          </p>
-        </section>
-
-        <section className="terms-section">
-          <h2>{texts.section2_title || "2. User Responsibilities"}</h2>
-          <p>
-            {texts.section2_content ||
-              "Users are responsible for maintaining the confidentiality of their account credentials."}
-          </p>
-        </section>
-
-        <section className="terms-section">
-          <h2>{texts.section3_title || "3. Payment Terms"}</h2>
-          <p>
-            {texts.section3_content ||
-              "Payment for services is due according to the selected subscription plan."}
-          </p>
-        </section>
-
-        <section className="terms-section">
-          <h2>{texts.section4_title || "4. Privacy Policy"}</h2>
-          <p>
-            {texts.section4_content ||
-              "We respect your privacy and protect your data according to GDPR regulations."}
-          </p>
-        </section>
-
-        <div className="back-link">
-          <a href="/login">← Back to Login</a>
-        </div>
-      </main> */}
+        <button className="back-btn bottom-btn">Close and Go Back</button>
+      </div>
     </div>
   );
 };

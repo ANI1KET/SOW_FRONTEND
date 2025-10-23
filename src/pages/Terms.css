@@ -1,6 +1,37 @@
 .terms-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.login-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 50px;
+  position: relative;
+  z-index: 100;
+}
+
+.terms-flex {
+  display: flex;
+  gap: 50px;
+}
+
+.language-button {
+  background-color: transparent;
+  border: none;
 }
 
 .terms-header {
@@ -13,7 +44,7 @@
 }
 
 .logo-container .logo {
-  height: 50px;
+  height: 40px;
   width: auto;
 }
 
@@ -149,5 +180,76 @@
 
   .terms-section {
     padding: 15px;
+  }
+}
+
+body,
+.terms-page {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.terms-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 0;
+  position: relative;
+}
+
+.terms-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.back-btn {
+  margin: 32px 0 0 0;
+  background: #13b43a;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 14px 56px;
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 3px 16px 0 rgba(44, 204, 87, 0.08);
+  transition: 0.2s ease;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.back-btn.top-btn {
+  margin-top: 20px;
+}
+
+.terms-box-plain {
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 4px 40px 0 rgba(34, 34, 68, 0.15);
+  padding: 32px 32px;
+  margin: 36px 0 36px 0;
+  width: 90vw;
+  max-width: 650px;
+  color: #222;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.75;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+@media (max-width: 700px) {
+  .terms-box-plain {
+    font-size: 1rem;
+  }
+  .back-btn {
+    width: 90vw;
+    font-size: 1.1rem;
+    border-radius: 26px;
+  }
+  .terms-title {
+    font-size: 2rem;
   }
 }
