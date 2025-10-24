@@ -107,12 +107,24 @@ const Terms = () => {
         <button className="back-btn top-btn">Close and Go Back</button>
 
         <div className="terms-box-plain">
-          <p>
-            {texts.intro} {texts.section1_title} {texts.section1_content}{" "}
-            {texts.section2_title} {texts.section2_content}{" "}
-            {texts.section3_title} {texts.section3_content}{" "}
-            {texts.section4_title} {texts.section4_content}
-          </p>
+          <p>{texts.intro}</p>
+          <p>{texts.section1}</p>
+          <br></br>
+          <p>{texts.section2}</p>
+          <p>{texts.section3}</p>
+          <br></br>
+          <p>{texts.section4}</p>
+          <p>{texts.section5}</p>
+          <p>{texts.section6}</p>
+          <p>{texts.section7}</p>
+          <p>{texts.section8}</p>
+          <p>{texts.section9}</p>
+          <p>{texts.section10}</p>
+          <p>{texts.section11}</p>
+          <p>{texts.section12}</p>
+          <p>{texts.section13}</p>
+          <p>{texts.section14}</p>
+          <p>{texts.closing}</p>
         </div>
 
         <button className="back-btn bottom-btn">Close and Go Back</button>

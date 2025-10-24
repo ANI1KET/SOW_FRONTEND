@@ -185,6 +185,7 @@
 
 body,
 .terms-page {
+  min-height: 100vh;
   font-family: "Poppins", Arial, sans-serif;
 }
 
@@ -192,6 +193,7 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
   justify-content: flex-start;
   box-sizing: border-box;
   padding: 0;
@@ -229,11 +231,11 @@ body,
   background: #fff;
   border-radius: 32px;
   box-shadow: 0 4px 40px 0 rgba(34, 34, 68, 0.15);
-  padding: 32px 32px;
+  padding: 40px 40px;
   margin: 36px 0 36px 0;
   width: 90vw;
-  max-width: 650px;
-  color: #222;
+  max-width: 800px;
+  color: #887a7a;
   font-size: 1.1rem;
   text-align: center;
   line-height: 1.75;
@@ -252,4 +254,9 @@ body,
   .terms-title {
     font-size: 2rem;
   }
+}
+
+.bottom-btn {
+  margin-top: 0;
+  margin-bottom: 50px;
 }
